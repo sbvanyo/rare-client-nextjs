@@ -2,7 +2,7 @@
   "name": "rare-client-nextjs",
   "private": true,
   "version": "1.0.0",
-  "author": "Stacey Vanyo",
+  "author": "Alpha Q",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
