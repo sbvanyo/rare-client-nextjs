@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "rare-client-nextjs",
   "private": true,
   "version": "1.0.0",
-  "author": "Update Name!",
+  "author": "Alpha Q",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
