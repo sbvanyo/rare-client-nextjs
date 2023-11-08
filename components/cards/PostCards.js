@@ -9,8 +9,8 @@ function PostCard({ postObj }) {
       <br />
       <Card.Body>
         <h2>{postObj.title}</h2>
-        <br />
-        <p className="card-text text-truncate">{postObj.content}</p>
+        <p className="card-text"><small className="text-body-secondary ">Created By: {postObj.user.first_name} {postObj.user.last_name}</small></p>
+        <p className="card-text text-truncate truncate">{postObj.content}</p>
         <p className="card-text"><small className="text-body-secondary ">Published: {postObj.publication_date}</small></p>
       </Card.Body>
     </Card>
@@ -23,6 +23,7 @@ PostCard.propTypes = {
     image_url: PropTypes.string,
     content: PropTypes.string,
     publication_date: PropTypes.string,
+    user: PropTypes.string,
   }),
 };
 

@@ -24,3 +24,7 @@ body {
 .navbar-item img {
   max-height: 3rem;
 }
+
+.truncate {
+  max-width: 250px;
+}
