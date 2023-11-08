@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 // import Link from 'next/link';
 // import { Button } from 'react-bootstrap';
-import { getCategories } from '../api calls/category';
+import { getCategories } from '../api/category';
 import CategoryCard from '../components/cards/categoryCard';
 
 function CategoryList() {
   // Set a state for categories
   const [categories, setCatgories] = useState([]);
-
-  // Get user ID using useAuth hook
-  // const { user } = useAuth();
 
   // create a function that makes the API call to get all the categories
   const getAllTheCategories = () => {
@@ -19,7 +16,7 @@ function CategoryList() {
   // make the call to the API to get all the categories on component render
   useEffect(() => {
     getAllTheCategories();
-  });
+  }, []);
 
   return (
     <div id="categoryContainer">

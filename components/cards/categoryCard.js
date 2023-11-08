@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
-import { deleteCategory } from '../../api calls/category';
+import { deleteCategory } from '../../api/category';
 
 function CategoryCard({ categoryObj, onUpdate }) {
   const deleteThisCategory = () => {
@@ -19,10 +19,6 @@ function CategoryCard({ categoryObj, onUpdate }) {
         <div id="categoryBody">
           <Card.Title className="cardTitle">{categoryObj.label}</Card.Title>
           <div id="categoryBtnGroup">
-            {/* DYNAMIC LINK TO VIEW THE category DETAILS  */}
-            <Link href={`/category/${categoryObj.id}`} passHref>
-              <Button variant="primary" className="m-2">VIEW</Button>
-            </Link>
             {/* DYNAMIC LINK TO EDIT THE category DETAILS  */}
             <Link href={`/category/edit/${categoryObj.id}`} passHref>
               <Button variant="info">EDIT</Button>

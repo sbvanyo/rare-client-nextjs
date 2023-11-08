@@ -1,5 +1,5 @@
 const getCategories = () => new Promise((resolve, reject) => {
-  fetch('http://localhost:8088/categories.json', {
+  fetch('http://localhost:8088/categories', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -11,7 +11,7 @@ const getCategories = () => new Promise((resolve, reject) => {
 });
 
 const getSingleCategory = (id) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/categories/${id}.json`, {
+  fetch(`http://localhost:8088/categories/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ const getSingleCategory = (id) => new Promise((resolve, reject) => {
 });
 
 const deleteCategory = (id) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/categories/${id}.json`, {
+  fetch(`http://localhost:8088/categories/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const deleteCategory = (id) => new Promise((resolve, reject) => {
 });
 
 const createCategory = (payload) => new Promise((resolve, reject) => {
-  fetch('http://localhost:8088/categories.json', {
+  fetch('http://localhost:8088/categories', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -47,23 +47,23 @@ const createCategory = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateCategory = (payload) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/categories/${payload.firebaseKey}.json`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  })
-    .then((response) => response.json())
-    .then((data) => resolve(data))
-    .catch(reject);
-});
+// const updateCategory = (payload) => new Promise((resolve, reject) => {
+//   fetch(`http://localhost:8088/categories/${payload.id}`, {
+//     method: 'PATCH',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(payload),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => resolve(data))
+//     .catch(reject);
+// });
 
 export {
   getCategories,
   getSingleCategory,
   createCategory,
   deleteCategory,
-  updateCategory,
+  // updateCategory,
 };
