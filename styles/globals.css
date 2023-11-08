@@ -28,3 +28,7 @@ body {
 .truncate {
   max-width: 250px;
 }
+
+.userTable {
+  margin: 5%
+}
