@@ -19,8 +19,9 @@ function Login({ setToken }) {
     };
 
     loginUser(user).then((res) => {
-      if ('valid' in res && res.valid) {
-        setToken(res.token);
+      const response = JSON.parse(res);
+      if ('valid' in response && response.valid) {
+        setToken(response.token);
         navigate.push('/');
       } else {
         setisUnsuccessful(true);
