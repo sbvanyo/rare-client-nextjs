@@ -47,23 +47,23 @@ const createCategory = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateCategory = (payload) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/categories/${payload.id}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  })
-    .then((response) => response.json())
-    .then((data) => resolve(data))
-    .catch(reject);
-});
+// const updateCategory = (payload) => new Promise((resolve, reject) => {
+//   fetch(`http://localhost:8088/categories/${payload.id}`, {
+//     method: 'PATCH',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(payload),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => resolve(data))
+//     .catch(reject);
+// });
 
 export {
   getCategories,
   getSingleCategory,
   createCategory,
   deleteCategory,
-  updateCategory,
+  // updateCategory,
 };
