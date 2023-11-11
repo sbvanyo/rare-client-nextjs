@@ -62,7 +62,15 @@ const updateCategory = (id, postBody) => new Promise((resolve, reject) => {
     },
     body: JSON.stringify(postBody),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response not ok.');
+      }
+      if (response.status === 204) {
+        return null;
+      }
+      return response.json();
+    })
     .then((data) => resolve(data))
     .catch(reject);
 });
