@@ -16,6 +16,7 @@ function UserTable() {
 
     fetchData();
   }, []);
+  console.warn(users);
 
   return (
     <div className="userTable">
