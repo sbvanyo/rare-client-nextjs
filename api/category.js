@@ -54,13 +54,13 @@ const createCategory = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateCategory = (payload) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/categories/${payload.id}`, {
-    method: 'PATCH',
+const updateCategory = (id, postBody) => new Promise((resolve, reject) => {
+  fetch(`http://localhost:8088/categories/${id}`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(postBody),
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
