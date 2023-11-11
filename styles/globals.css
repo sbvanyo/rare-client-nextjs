@@ -33,6 +33,23 @@ body {
   margin: 5%
 }
 
+.tags {
+  display: flex;
+}
+
+.tag {
+  margin-right: 10px;
+}
+
+.single_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
+
 /* SHEEEEEEEEEEP */
 
 /* variables for sheep */

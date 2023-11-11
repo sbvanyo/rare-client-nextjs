@@ -45,19 +45,20 @@ export default function ViewPost() {
       >
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={postDetails.image_url} alt={postDetails.title} style={{ width: '300px' }} />
+          <img className="single_img" src={postDetails.image_url} alt={postDetails.title} />
         </div>
         <div className="text-white ms-5 details">
           <h3>{postDetails.title}</h3>
           <p>{postDetails.content}</p>
-          {/* <p>{postDetails.label}</p> */}
           <div>
-            {/* {tagsList} */}
-            {postDetails.tags?.map((tag) => (
-              <p className="card-text">
-                <small className="text-body-secondary ">Tags: {tag.label}</small>
-              </p>
-            ))}
+            Tags:
+            <div className="tags">
+              {postDetails.tags?.map((tag) => (
+                <p className="card-text tag">
+                  <small className="text-body-secondary ">{tag.label}</small>
+                </p>
+              ))}
+            </div>
           </div>
           <br />
           <p className="card-text">
