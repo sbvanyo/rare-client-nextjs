@@ -21,7 +21,7 @@ function AppNavBar({ token, setToken }) {
           <Nav className="me-auto">
             {token ? (
               <Link passHref href="/">
-                <Nav.Link>_</Nav.Link>
+                <Nav.Link>Home</Nav.Link>
               </Link>
             ) : (
               ''
@@ -48,17 +48,11 @@ function AppNavBar({ token, setToken }) {
                 </Link>
               </>
             )}
-            <Link passHref href="/allPosts">
-              <Nav.Link><b>All Posts</b></Nav.Link>
-            </Link>
-            <Link passHref href="/myPosts">
-              <Nav.Link><b>My Posts</b></Nav.Link>
+            <Link passHref href="/">
+              <Nav.Link><b>Posts</b></Nav.Link>
             </Link>
             <Link passHref href="/categories">
-              <Nav.Link><b>Category Manager</b></Nav.Link>
-            </Link>
-            <Link passHref href="/tagManager">
-              <Nav.Link><b>Tag Manager</b></Nav.Link>
+              <Nav.Link><b>Categories</b></Nav.Link>
             </Link>
             <Link passHref href="/users">
               <Nav.Link><b>Users</b></Nav.Link>

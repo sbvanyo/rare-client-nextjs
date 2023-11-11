@@ -10,7 +10,7 @@ function CategoryList() {
 
   // create a function that makes the API call to get all the categories
   const getAllTheCategories = () => {
-    getCategories().then(setCatgories);
+    getCategories().then((data) => setCatgories(data));
   };
 
   // make the call to the API to get all the categories on component render
@@ -18,17 +18,20 @@ function CategoryList() {
     getAllTheCategories();
   }, []);
 
+  /*  localeCompare is a string comparison function that compares two strings and returns a value indicating their relative order. In this case, it sorts the categories based on their label property in alphabetical order. */
+  const sortedCategories = categories.slice().sort((a, b) => a.label.localeCompare(b.label));
+
   return (
     <div id="categoryContainer">
       <h1 className="title">categories</h1>
       <div id="categoryCardList">
-        {/* map over categories here using CategoryCard component */}
-        {categories.map((category) => (
+        {/* map over sorted categories here using CategoryCard component */}
+        {sortedCategories.map((category) => (
           <CategoryCard key={category.id} categoryObj={category} onUpdate={getAllTheCategories} />
         ))}
       </div>
       {/* <Link passHref href="/category/new">
-        <Button id="addNeighborhoodBtn">add a neighborhood</Button>
+        <Button id="addCategoryBtn">add a category</Button>
       </Link> */}
     </div>
   );
