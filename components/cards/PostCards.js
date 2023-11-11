@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import { Card } from 'react-bootstrap';
 
 function PostCard({ postObj }) {
@@ -8,7 +9,11 @@ function PostCard({ postObj }) {
       <Card.Img variant="top" src={postObj.image_url} alt={postObj.title} style={{ height: '300px' }} />
       <br />
       <Card.Body>
-        <h2>{postObj.title}</h2>
+        <h2>
+          <Link href={`post/${postObj.id}`}>
+            {postObj.title}
+          </Link>
+        </h2>
         <p className="card-text"><small className="text-body-secondary ">Created By: {postObj.user.first_name} {postObj.user.last_name}</small></p>
         <p className="card-text text-truncate truncate">{postObj.content}</p>
         <p className="card-text"><small className="text-body-secondary ">Published: {postObj.publication_date}</small></p>
@@ -24,6 +29,7 @@ PostCard.propTypes = {
     content: PropTypes.string,
     publication_date: PropTypes.string,
     user: PropTypes.string,
+    id: PropTypes.string,
   }),
 };
 

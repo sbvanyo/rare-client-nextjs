@@ -40,9 +40,9 @@ export default function ViewPost() {
           {/* <p>{postDetails.label}</p> */}
           <div>
             {/* {tagsList} */}
-            {/* {postDetails.tags.map((tag) => (
+            {postDetails.tags?.map((tag) => (
               <p className="card-text"><small className="text-body-secondary ">Tags: {tag.label}</small></p>
-            ))} */}
+            ))}
           </div>
           <br />
           <p className="card-text"><small className="text-body-secondary ">Published: {postDetails.publication_date}</small></p>
