@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-// import React from 'react';
 import React, { useEffect, useState } from 'react';
 // import './Sheep.css';
 
@@ -60,7 +59,7 @@ export default function Sheep() {
                 <div className="wool-toplayer">
                   <h1
                     style={{
-                      color: 'red',
+                      color: 'black',
                       zIndex: 4,
                       fontSize: 40,
                       position: 'absolute',
@@ -70,7 +69,7 @@ export default function Sheep() {
                       userSelect: 'none',
                     }}
                   >
-                    <span style={{ position: 'absolute', rotate: '-30deg' }}>
+                    <span style={{ position: 'absolute', rotate: '-40deg' }}>
                       SHEEP!
                     </span>
                   </h1>
