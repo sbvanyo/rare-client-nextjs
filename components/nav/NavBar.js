@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import Logo from './rare.jpeg';
 
 function AppNavBar({ token, setToken }) {
-  const navigate = useRouter();
+  const router = useRouter();
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -33,7 +33,7 @@ function AppNavBar({ token, setToken }) {
                 className="button is-outlined"
                 onClick={() => {
                   setToken('');
-                  navigate('/login');
+                  router.push('/login');
                 }}
               >
                 Logout
@@ -48,9 +48,6 @@ function AppNavBar({ token, setToken }) {
                 </Link>
               </>
             )}
-            <Link passHref href="/">
-              <Nav.Link><b>Posts</b></Nav.Link>
-            </Link>
             <Link passHref href="/categories">
               <Nav.Link><b>Categories</b></Nav.Link>
             </Link>
