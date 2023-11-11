@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getPosts } from '../api/post';
 import PostCard from '../components/cards/PostCards';
+import Sheep from '../components/Secret/Sheep';
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -16,13 +17,16 @@ function Home() {
   console.warn(posts);
 
   return (
-    <div className="text-center my-4">
-      <div className="d-flex flex-wrap">
-        {posts.map((post) => (
-          <PostCard key={post.firebaseKey} postObj={post} onUpdate={getAllPosts} />
-        ))}
+    <>
+      <Sheep />
+      <div className="text-center my-4">
+        <div className="d-flex flex-wrap">
+          {posts.map((post) => (
+            <PostCard key={post.firebaseKey} postObj={post} onUpdate={getAllPosts} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
