@@ -29,7 +29,14 @@ const deleteCategory = (id) => new Promise((resolve, reject) => {
       'Content-Type': 'application/json',
     },
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.ok && response.status !== 204) {
+        return response.json();
+      } if (response.ok) {
+        return null;
+      }
+      throw new Error(`HTTP error! status: ${response.status}`);
+    })
     .then((data) => resolve((data)))
     .catch(reject);
 });
@@ -47,23 +54,31 @@ const createCategory = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// const updateCategory = (payload) => new Promise((resolve, reject) => {
-//   fetch(`http://localhost:8088/categories/${payload.id}`, {
-//     method: 'PATCH',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(payload),
-//   })
-//     .then((response) => response.json())
-//     .then((data) => resolve(data))
-//     .catch(reject);
-// });
+const updateCategory = (id, postBody) => new Promise((resolve, reject) => {
+  fetch(`http://localhost:8088/categories/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(postBody),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response not ok.');
+      }
+      if (response.status === 204) {
+        return null;
+      }
+      return response.json();
+    })
+    .then((data) => resolve(data))
+    .catch(reject);
+});
 
 export {
   getCategories,
   getSingleCategory,
   createCategory,
   deleteCategory,
-  // updateCategory,
+  updateCategory,
 };
