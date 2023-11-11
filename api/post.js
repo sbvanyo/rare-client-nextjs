@@ -10,4 +10,16 @@ const getPosts = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getPosts;
+const getSinglePost = (id) => new Promise((resolve, reject) => {
+  fetch(`http://localhost:8088/posts/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export { getPosts, getSinglePost };

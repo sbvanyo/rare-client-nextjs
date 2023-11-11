@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import getPosts from '../api/post';
+import { getPosts } from '../api/post';
 import PostCard from '../components/cards/PostCards';
 
 function Home() {
@@ -12,6 +12,8 @@ function Home() {
   useEffect(() => {
     getAllPosts();
   }, []);
+
+  console.warn(posts);
 
   return (
     <div className="text-center my-4">
