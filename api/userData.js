@@ -31,4 +31,31 @@ const getSingleUser = async (token) => {
   }
 };
 
-export default getSingleUser;
+const updateSingleUser = async (userId, updatedUserData) => {
+  try {
+    const response = await fetch(`${apiUrl}/users/${userId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedUserData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update user');
+    }
+
+    const text = await response.text();
+    if (!text) {
+      return null;
+    }
+
+    const data = JSON.parse(text);
+    return data;
+  } catch (error) {
+    console.error('Error updating user data:', error);
+    throw error;
+  }
+};
+
+export { getSingleUser, updateSingleUser };
