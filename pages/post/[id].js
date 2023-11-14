@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { getSinglePost } from '../../api/post';
 import { getPostComments } from '../../api/commentData';
+import Sheep from '../../components/Secret/Sheep';
 // import getPostTags from '../../api/postTags';
 
 export default function ViewPost() {
@@ -12,7 +13,7 @@ export default function ViewPost() {
   //   const [postTags, setPostTags] = useState([]);
   const [comments, setComments] = useState([]);
   const [show, setShowComments] = useState(false);
-  const [showCreateComments, setShowCreateComments] = useState(false);
+  // const [showCreateComments, setShowCreateComments] = useState(false);
   const router = useRouter();
 
   const { id } = router.query;
@@ -20,7 +21,6 @@ export default function ViewPost() {
   useEffect(() => {
     getSinglePost(id).then(setPostDetails);
     getPostComments(id).then(setComments);
-    // getPostTags(id).then(setPostTags);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -29,20 +29,13 @@ export default function ViewPost() {
 
   const handleCloseComments = () => setShowComments(false);
   const handleShowComments = () => setShowComments(true);
-  const handleCloseCreateComments = () => setShowCreateComments(false);
-  const handleShowCreateComments = () => setShowCreateComments(true);
+  // const handleCloseCreateComments = () => setShowCreateComments(false);
+  // const handleShowCreateComments = () => setShowCreateComments(true);
 
   return (
     <>
-      <div
-        className="mt-5 d-flex flex-wrap"
-        // style={{
-        //   backgroundImage: 'url(https://img.freepik.com/free-photo/empty-blackboard_53876-16241.jpg)',
-        //   backgroundSize: '100% 100%', // Stretch both horizontally and vertically
-        //   backgroundPosition: 'center bottom', // Show the bottom edge
-        //   padding: '30px', // Add padding for better spacing
-        // }}
-      >
+      <Sheep />
+      <div className="mt-5 d-flex flex-wrap">
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="single_img" src={postDetails.image_url} alt={postDetails.title} />
@@ -93,7 +86,7 @@ export default function ViewPost() {
           </Modal.Footer>
         </Modal>
       </div>
-      <div>
+      {/* <div>
         <Button variant="primary" onClick={handleShowCreateComments}>
           Create A Comment
         </Button>
@@ -109,7 +102,7 @@ export default function ViewPost() {
             </Button>
           </Modal.Footer>
         </Modal>
-      </div>
+      </div> */}
     </>
   );
 }

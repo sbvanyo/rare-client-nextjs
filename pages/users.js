@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { getSingleUser, updateSingleUser } from '../api/userData';
 import UpdateUserModal from '../components/modals/updateUserModal';
+import Sheep from '../components/Secret/Sheep';
 
 function UserTable({ token }) {
   const [user, setUser] = useState(null);
@@ -24,6 +25,8 @@ function UserTable({ token }) {
     }
   }, [token]);
 
+  console.warn(user);
+
   const handleUpdate = async (updatedUser) => {
     try {
       await updateSingleUser(user.id, updatedUser);
@@ -42,6 +45,7 @@ function UserTable({ token }) {
       <Button type="button" id="userUpdateBtn" onClick={() => setShowUpdateModal(true)}>
         Update User
       </Button>
+      <Sheep />
 
       {user && (
         <>
