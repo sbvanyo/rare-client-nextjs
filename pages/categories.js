@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 // import { Button } from 'react-bootstrap';
 import { getCategories } from '../api/category';
 import CategoryCard from '../components/cards/categoryCard';
+import Sheep from '../components/Secret/Sheep';
 
 function CategoryList() {
   // Set a state for categories
@@ -22,18 +23,21 @@ function CategoryList() {
   const sortedCategories = categories.slice().sort((a, b) => a.label.localeCompare(b.label));
 
   return (
-    <div id="categoryContainer">
-      <h1 className="title">categories</h1>
-      <div id="categoryCardList">
-        {/* map over sorted categories here using CategoryCard component */}
-        {sortedCategories.map((category) => (
-          <CategoryCard key={category.id} categoryObj={category} onUpdate={getAllTheCategories} />
-        ))}
+    <>
+      <Sheep />
+      <div id="categoryContainer">
+        <h1 className="title">categories</h1>
+        <div id="categoryCardList">
+          {/* map over sorted categories here using CategoryCard component */}
+          {sortedCategories.map((category) => (
+            <CategoryCard key={category.id} categoryObj={category} onUpdate={getAllTheCategories} />
+          ))}
+        </div>
+        {/* <Link passHref href="/category/new">
+          <Button id="addCategoryBtn">add a category</Button>
+        </Link> */}
       </div>
-      {/* <Link passHref href="/category/new">
-        <Button id="addCategoryBtn">add a category</Button>
-      </Link> */}
-    </div>
+    </>
   );
 }
 

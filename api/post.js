@@ -1,5 +1,7 @@
+const apiURL = 'http://localhost:8088';
+
 const getPosts = () => new Promise((resolve, reject) => {
-  fetch('http://localhost:8088/posts', {
+  fetch(`${apiURL}/posts`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -11,7 +13,7 @@ const getPosts = () => new Promise((resolve, reject) => {
 });
 
 const getSinglePost = (id) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/posts/${id}`, {
+  fetch(`${apiURL}/posts/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -22,4 +24,35 @@ const getSinglePost = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getPosts, getSinglePost };
+const createPost = (payload) => new Promise((resolve, reject) => {
+  fetch(`${apiURL}/posts.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'appliction/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const updatePost = (payload) => new Promise((resolve, reject) => {
+  fetch(`${apiURL}/items/${payload.id}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export {
+  getPosts,
+  getSinglePost,
+  createPost,
+  updatePost,
+};
